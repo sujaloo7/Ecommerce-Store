@@ -1,0 +1,63 @@
+.login-button {
+    box-shadow: 0px 10px 30px -3px rgba(233, 145, 72, 1);
+
+}
+
+.nav-item .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: space-evenly;
+}
+
+.hero h1 {
+    font-size: 50px;
+}
+
+.hero p {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hero img {
+    height: 500px;
+
+    /* width: 80%; */
+}
+
+.start-button {
+    background-color: rgba(242, 133, 43, 1) !important;
+    box-shadow: 0px 10px 30px -3px rgba(233, 145, 72, 1);
+    color: white !important;
+}
+
+#Featured {
+    margin-top: 10rem;
+}
+
+.addbutton {
+    background-color: rgba(242, 133, 43, 1) !important;
+    box-shadow: 0px 10px 30px -3px rgba(233, 145, 72, 1);
+}
+
+#Featured .slick-prev {
+    /* background-color: rgb(0, 0, 0) !important; */
+    color: rgb(255, 255, 255) !important;
+    border-radius: 50%;
+}
+
+#Featured .slick-next {
+    /* background-color: rgb(0, 0, 0) !important; */
+    color: rgb(255, 255, 255) !important;
+    border-radius: 50%;
+
+
+}
+
+.sale-section {
+    margin-top: 240px;
+
+}
+.sale img
+{
+    height: 550px;
+}
