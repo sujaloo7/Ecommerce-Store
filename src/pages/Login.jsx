@@ -26,7 +26,6 @@ const Login = () => {
                                     placeholder='Enter password'
                                     required
                                 />
-
                                 <InputRightElement width='4.5rem'>
                                     <Button h='1.75rem' size='lg' className='p-1 mt-2' bgColor={"white"} onClick={handleClick}>
                                         {show ? <AiFillEye /> : <AiFillEyeInvisible />}

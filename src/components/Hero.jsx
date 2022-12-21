@@ -20,7 +20,6 @@ const Hero = () => {
                                 wrapperClassName: "typewriterpara",
                             }}
                         /></h1>
-
                         <p>We Work With Global Brands And Have Created <br></br> An Application For You To Do Your Shopping </p><a href="#Featured">
                             <Button className='start-button' padding={"8"} marginTop={"5"}>Start Shopping</Button>
                         </a>
@@ -42,7 +41,6 @@ const Hero = () => {
                             <img src={hero} alt="" />
                         </motion.div>
                     </div>
-
                 </div>
             </div>
         </>

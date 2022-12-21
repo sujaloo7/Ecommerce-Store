@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { server } from '..';
 import axios from 'axios';
-import { Card, CardBody, Image, Stack, Heading, Text, Button, ButtonGroup, Divider, CardFooter } from '@chakra-ui/react';
+import { Card, CardBody, Image, Stack, Heading, Text, Divider } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
+import Loader from './Loader';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -14,60 +17,54 @@ const Shop = () => {
                 const { data } = await axios.get(`${server}`);
                 setProducts(data.products);
                 console.log(data);
+                setLoading(false);
             } catch (error) {
                 <h1>no data</h1>
             }
-
         };
         fetchProducts();
     }, [])
-
-
     return (
         <>
             <Navbar />
-            <div className="container">
-                <div className="row">
-                    {
-                        products.map((ele, index) => {
-                            return (
-                                <div className="col-sm-3">
-                                    <Card maxW='sm' shadow={"none"} key={ele.id}>
-                                        <CardBody>
-                                            <Image
-                                                src={ele.thumbnail}
-                                                alt='Green double couch with wooden legs'
-                                                borderRadius='lg'
-                                                height={"200"}
-                                                width={"100%"}
+            <div className="container mt-5">
+                {loading ? <Loader /> : <>
+                    <div className="row">
+                        {
+                            products.map((ele, index) => {
+                                return (
+                                    <div className="col-sm-3">
+                                        <Link to={`/singleproduct/${ele.id}`}>
+                                            <Card maxW='sm' margin={"3"} key={ele.id}>
+                                                <CardBody>
+                                                    {loading ? <Loader /> : <>
+                                                        <Image
+                                                            src={ele.thumbnail}
+                                                            alt='Green double couch with wooden legs'
+                                                            borderRadius='lg'
+                                                            height={"150"}
+                                                            width={"100%"}
 
-                                            />
-                                            <Stack mt='6' spacing='3'>
-                                                <Heading size='md'>{ele.title}</Heading>
-                                                <Text color='blue.600' fontSize='2xl'>
-                                                    ${ele.price}
-                                                </Text>
-                                            </Stack>
-                                        </CardBody>
-                                        <Divider />
-                                        <CardFooter>
-                                            <ButtonGroup spacing='2'>
+                                                        />
+                                                    </>}
+                                                    <Stack mt='6' spacing='3'>
+                                                        <Heading size='sm' style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontFamily: "segoe ui symbol" }}>{ele.title}</Heading>
+                                                        <Text color='orange' fontSize='1xl'>
+                                                            ${ele.price}
+                                                        </Text>
+                                                    </Stack>
+                                                </CardBody>
+                                                <Divider />
 
-                                                <Button variant='solid' className='addbutton' paddingLeft={"30px"} paddingRight={"30px"} colorScheme='blue'>
-                                                    Add to cart
-                                                </Button>
-                                                <Button variant='ghost' className='cartbutton' color={"blackAlpha.900"} colorScheme='blue'>
-                                                    Buy Now
-                                                </Button>
-                                            </ButtonGroup>
-                                        </CardFooter>
-                                    </Card>
-                                </div>
-                            );
-                        })
-                    }
+                                            </Card>
+                                        </Link>
+                                    </div>
+                                );
+                            })
+                        }
 
-                </div>
+                    </div>
+                </>}
             </div>
         </>
     )

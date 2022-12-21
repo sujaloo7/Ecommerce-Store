@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Shop from './pages/Shop';
+import Singleproduct from './pages/Singleproduct';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/singleproduct/:id' element={<Singleproduct />} />
         </Routes>
       </Router>
 
