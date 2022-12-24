@@ -44,6 +44,7 @@ const Shop = () => {
                                                             borderRadius='lg'
                                                             height={"150"}
                                                             width={"100%"}
+                                                            objectFit={"cover"}
 
                                                         />
                                                     </>}

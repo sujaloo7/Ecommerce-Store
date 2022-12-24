@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Shop from './pages/Shop';
 import Singleproduct from './pages/Singleproduct';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/shop' element={<Shop />} />
           <Route path='/singleproduct/:id' element={<Singleproduct />} />
         </Routes>
+        <Toaster />
       </Router>
 
     </>
