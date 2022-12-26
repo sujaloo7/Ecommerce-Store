@@ -1,22 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, InputRightElement, Button, InputGroup, Stack } from '@chakra-ui/react'
 import "./login.css";
 import { AiFillEye, AiFillEyeInvisible, AiFillLinkedin, AiFillApple, AiFillFacebook } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { userLogin } from '../Repository/UserRepository';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
+    const navigate = useNavigate();
+
+    const loginUser = async (e) => {
+        e.preventDefault();
+        let res = await userLogin({
+            email: email,
+            password: password,
+            user_type: "student",
+        });
+
+        if (res.status === 1) {
+
+            localStorage.setItem("auth_token", res.data.token);
+            localStorage.setItem("user_type", res.data.user_type);
+            localStorage.setItem("user_email", res.data.email);
+
+            toast.success(res.message)
+            navigate("/");
+
+
+        } else {
+            toast.error(res.message);
+        }
+    };
     return (
         <>
             <div className="container-fluid login">
                 <div className="row p-2">
-                    <form action="" className='bg-white col-sm-3 ms-auto me-auto shadow p-4' >
+                    <form action="" className='bg-white col-sm-3 ms-auto me-auto shadow p-4' onSubmit={loginUser}>
                         <h2 className='text-center fs-4 fw-bold mb-3' >Login</h2>
                         <div className='mb-4'>
-                            <Input placeholder='Enter Email' type={"email"} required />
+                            <Input placeholder='Enter Email' type={"email"} required onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className='mb-3'>
                             <InputGroup size='md'>
@@ -25,6 +52,8 @@ const Login = () => {
                                     type={show ? 'text' : 'password'}
                                     placeholder='Enter password'
                                     required
+                                    onChange={(e) => setPassword(e.target.value)}
+
                                 />
                                 <InputRightElement width='4.5rem'>
                                     <Button h='1.75rem' size='lg' className='p-1 mt-2' bgColor={"white"} onClick={handleClick}>

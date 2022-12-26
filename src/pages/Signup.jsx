@@ -1,24 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./signup.css";
 import { Input, InputRightElement, Button, InputGroup, Stack } from '@chakra-ui/react'
 import { AiFillEye, AiFillEyeInvisible, AiFillLinkedin, AiFillApple, AiFillFacebook } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { userRegister } from "../Repository/UserRepository"
+import { toast } from 'react-hot-toast';
+
 
 const Signup = () => {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+
+
+    const registerUser = async (e) => {
+        e.preventDefault();
+        let res = await userRegister({
+            name: name,
+            email: email,
+            password: password,
+            mobile: "123456",
+            user_type: "student",
+        });
+
+        if (res.status === 1) {
+
+            toast.success(res.message)
+
+            navigate("/");
+            localStorage.setItem("user_name", res.data.name);
+
+
+        } else {
+            toast.error(res.message);
+        }
+    };
     return (
         <>
             <div className="container-fluid signup">
                 <div className="row">
-                    <form action="" className='bg-white col-sm-3 ms-auto me-auto shadow p-4' >
+                    <form action="" className='bg-white col-sm-3 ms-auto me-auto shadow p-4' onSubmit={registerUser}>
                         <h2 className='text-center fs-4 fw-bold mb-3' >SignUp</h2>
                         <div className='mb-4'>
-                            <Input placeholder='Enter Full Name' type={"text"} required />
+                            <Input placeholder='Enter Full Name' type={"text"}
+                                onChange={(e) => setName(e.target.value)}
+                                required />
                         </div>
                         <div className='mb-4'>
-                            <Input placeholder='Enter Email' type={"email"} required />
+                            <Input placeholder='Enter Email' type={"email"}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required />
                         </div>
                         <div className='mb-3'>
                             <InputGroup size='md'>
@@ -27,6 +63,8 @@ const Signup = () => {
                                     type={show ? 'text' : 'password'}
                                     placeholder='Enter password'
                                     required
+                                    onChange={(e) => setPassword(e.target.value)}
+
                                 />
 
                                 <InputRightElement width='4.5rem'>

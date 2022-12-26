@@ -5,6 +5,7 @@ import { Card, CardBody, Image, Stack, Heading, Text, Divider } from '@chakra-ui
 import Navbar from '../components/Navbar';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -14,12 +15,13 @@ const Shop = () => {
 
         const fetchProducts = async () => {
             try {
-                const { data } = await axios.get(`${server}`);
+                const { data } = await axios.get(`${server}?limit=200`);
                 setProducts(data.products);
                 console.log(data);
                 setLoading(false);
             } catch (error) {
-                <h1>no data</h1>
+                setLoading(false);
+                toast.error("Ooops! Somthing Went Wrong");
             }
         };
         fetchProducts();
@@ -40,7 +42,6 @@ const Shop = () => {
                                                     {loading ? <Loader /> : <>
                                                         <Image
                                                             src={ele.thumbnail}
-                                                            alt='Green double couch with wooden legs'
                                                             borderRadius='lg'
                                                             height={"150"}
                                                             width={"100%"}

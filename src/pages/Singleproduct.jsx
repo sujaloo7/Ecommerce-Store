@@ -10,6 +10,7 @@ import Loader from './Loader';
 import { FcLike } from "react-icons/fc"
 import { BsCart2, BsTagFill } from "react-icons/bs"
 import { toast } from 'react-hot-toast';
+import Related from '../components/Related';
 
 
 const Singleproduct = () => {
@@ -66,8 +67,6 @@ const Singleproduct = () => {
                                     );
                                 })}
                             </Carousel>
-
-
                         </div>
                         <div className="col-sm-6">
                             <Heading size={"lg"}>{products?.title}</Heading>
@@ -95,6 +94,8 @@ const Singleproduct = () => {
                         </div>
                     </div>
                 </div>
+
+                <Related/>
             </>}
         </>
     )

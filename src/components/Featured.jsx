@@ -62,7 +62,8 @@ const Featured = () => {
         ]
     };
     return (
-        <>    <div className="container mt-5 mb-3" id='Featured' >
+        <>   
+         <div className="container mt-5 mb-3" id='Featured' >
             <div className="row">
                 <div>
                     <h2 className='fs-5 mb-5 p-2  ' style={{ fontWeight: "500" }}>Featured Products </h2>
