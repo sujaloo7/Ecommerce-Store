@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import Shop from './pages/Shop';
 import Singleproduct from './pages/Singleproduct';
 import { Toaster } from 'react-hot-toast';
+import Category from './pages/Category';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/category' element={<Category />} />
           <Route path='/singleproduct/:id' element={<Singleproduct />} />
         </Routes>
         <Toaster />

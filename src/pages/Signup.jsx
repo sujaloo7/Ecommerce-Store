@@ -29,11 +29,10 @@ const Signup = () => {
         });
 
         if (res.status === 1) {
-
+            localStorage.setItem("user_name", res.data.name);
             toast.success(res.message)
 
             navigate("/");
-            localStorage.setItem("user_name", res.data.name);
 
 
         } else {

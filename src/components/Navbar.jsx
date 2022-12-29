@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react';
 import React from 'react';
 import logo from "./logo.png"
 import "./components.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,13 +16,20 @@ import {
     MenuOptionGroup,
     MenuDivider,
 } from '@chakra-ui/react';
+import { FiHeart, FiLogOut, FiShoppingCart, FiUsers } from "react-icons/fi"
+import { toast } from 'react-hot-toast';
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
 
     let email = localStorage.getItem("user_email");
-
+    const logOut = () => {
+        localStorage.clear();
+        navigate("/login");
+        toast.success("Logged Out Successfully")
+    }
 
 
     useEffect(() => {
@@ -55,7 +62,7 @@ const Navbar = () => {
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to="">Category</Link>
+                                <Link className="nav-link " aria-current="page" to="/category">Category</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link " aria-current="page" to="/shop">Shop</Link>
@@ -69,24 +76,34 @@ const Navbar = () => {
 
                         </ul>
                         {isLoggedIn ? (
-                            <Menu>
-                                <MenuButton >
-                                    {email}
-                                </MenuButton>
-                                <MenuList>
-                                    <MenuItem>Download</MenuItem>
-                                    <MenuItem>Create a Copy</MenuItem>
-                                    <MenuItem>Mark as Draft</MenuItem>
-                                    <MenuItem>Delete</MenuItem>
-                                    <MenuItem>Attend a Workshop</MenuItem>
-                                </MenuList>
-                            </Menu>
-
+                            <>
+                                <Link to="/">
+                                    <FiShoppingCart size={20} className='me-4' />
+                                </Link>
+                                <Menu>
+                                    <MenuButton style={{
+                                        textOverflow: "ellipsis ",
+                                        maxWidth: "45px",
+                                        whiteSpace: "nowrap ",
+                                        overflow: "hidden  ",
+                                        fontSize: "20px"
+                                    }}>
+                                        {email}
+                                    </MenuButton>
+                                    <MenuList>
+                                        <MenuItem> <FiUsers /> &nbsp;My Account</MenuItem>
+                                        <MenuItem> <FiHeart /> &nbsp;My Wishlist</MenuItem>
+                                        <MenuItem onClick={logOut}><FiLogOut /> &nbsp;Logout</MenuItem>
+                                    </MenuList>
+                                </Menu>
+                            </>
                         ) : (
                             <Link to="/login">
                                 <Button size='lg' className="login-button px-4 text-light" style={{ backgroundColor: "#FF7F00" }}>Login</Button>
                             </Link>
+
                         )}
+
                     </div>
                 </div>
             </nav>

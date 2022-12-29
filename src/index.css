@@ -43,3 +43,26 @@ a {
   background-color: rgba(242, 133, 43, 1) !important;
   color: white;
 }
+
+.category-card {
+  border: 0px !important;
+  color: rgba(242, 133, 43, 1);
+  transition: 0.4s;
+}
+
+.category-card:hover {
+  background-color: rgba(242, 133, 43, 1) !important;
+  color: white;
+  box-shadow: 0px 5px 20px -3px rgba(242, 133, 43, 1);
+
+
+}
+
+.statics-card {
+  background-color: rgba(242, 133, 43, 1) !important;
+  box-shadow: 0px 5px 20px -3px rgba(242, 133, 43, 1);
+  border: 0px !important;
+  color: white;
+
+
+}
