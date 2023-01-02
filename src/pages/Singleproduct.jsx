@@ -11,6 +11,7 @@ import { FcLike } from "react-icons/fc"
 import { BsCart2, BsTagFill } from "react-icons/bs"
 import { toast } from 'react-hot-toast';
 import Related from '../components/Related';
+import Footer from '../components/Footer';
 
 
 const Singleproduct = () => {
@@ -61,7 +62,7 @@ const Singleproduct = () => {
                                     return (
                                         <div className=''>
                                             {loading ? <Loader /> : <>
-                                                <img src={i} key={index} style={{ height: "400px", objectFit: "contain"  , borderRadius:"15px"}} alt="Item1" />
+                                                <img src={i} key={index} style={{ height: "400px", objectFit: "contain", borderRadius: "15px" }} alt="Item1" />
                                             </>}
                                         </div>
                                     );
@@ -95,7 +96,9 @@ const Singleproduct = () => {
                     </div>
                 </div>
 
-                <Related/>
+                <Related />
+
+                <Footer />
             </>}
         </>
     )

@@ -4,11 +4,12 @@ import { server } from '..'
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { BsFiles } from "react-icons/bs";
+import Footer from '../components/Footer';
+// import { BsFiles } from "react-icons/bs";
 
 const Category = () => {
     const [category, setCategory] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -17,9 +18,9 @@ const Category = () => {
                 const { data } = await axios.get(`${server}/categories`);
                 setCategory(data);
                 console.log(data);
-                setLoading(false);
+                // setLoading(false);
             } catch (error) {
-                setLoading(false);
+                // setLoading(false);
                 toast.error("Ooops! Somthing Went Wrong");
             }
         };
@@ -33,8 +34,6 @@ const Category = () => {
                     <div className="row">
                         <h4 className='ms-2 mb-4 ' style={{ fontWeight: "600" }}>Filter By Type</h4>
                         <div className="col-sm-3 text-center">
-
-
                             <Link to={"/shop"}>
                                 <div className="card m-2 p-3 statics-card " style={{ height: "200px", textTransform: "capitalize" }}>
                                     <h1 className='mt-5 pt-4'>All</h1>
@@ -63,6 +62,7 @@ const Category = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

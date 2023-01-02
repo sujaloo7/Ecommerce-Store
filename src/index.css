@@ -1,8 +1,10 @@
 * {
   font-family: 'Poppins', sans-serif;
+  list-style: none !important;
 
 
 }
+
 
 a {
   text-decoration: none !important;
@@ -65,4 +67,19 @@ a {
   color: white;
 
 
+}
+
+@media only screen and (max-width: 600px) {
+  .hero {
+    text-align: center !important;
+  }
+
+  .hero .text-section {
+    margin-left: 0px !important;
+  }
+
+  .newsletter {
+    height: auto !important;
+    padding: 20px;
+  }
 }

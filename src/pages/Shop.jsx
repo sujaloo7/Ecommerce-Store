@@ -6,13 +6,13 @@ import Navbar from '../components/Navbar';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import Footer from '../components/Footer';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-
         const fetchProducts = async () => {
             try {
                 const { data } = await axios.get(`${server}?limit=200`);
@@ -68,6 +68,7 @@ const Shop = () => {
                     </div>
                 </>}
             </div>
+            <Footer/>
         </>
     )
 }

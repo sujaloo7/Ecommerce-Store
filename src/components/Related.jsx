@@ -103,7 +103,7 @@ const Related = () => {
                                                         <Stack mt='6' spacing='3'>
                                                             <Heading size='md' width={"100%"}
                                                                 objectFit={"cover"}
-                                                            >unpaired red Nike sneaker</Heading>
+                                                            >{ele?.title}</Heading>
                                                             <Text color='blue.600' fontSize='2xl'>
                                                                 $450
                                                             </Text>
