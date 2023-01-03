@@ -1,9 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react';
 import "./components.css";
-import hero from "../images/hero-left.png"
-import Typewriter from "typewriter-effect";
-import { motion } from "framer-motion";
+
 
 const Hero = () => {
     return (

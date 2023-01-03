@@ -12,7 +12,7 @@ const Newsletter = () => {
                             <Text className='mt-2' style={{ fontSize: "14px" }}> Get E-mail updates about our latest shop and <span style={{ color: "rgba(242, 133, 43, 1)" }}>special offers.</span></Text>
                         </div>
                         <div className="col-sm-5 mt-1">
-                            <input type="email" className='mt-5 p-2 w-50' placeholder='Your Email Address' style={{ backgroundColor: "white" }} /><button className='p-2 px-3 text-light' style={{ backgroundColor: "rgba(242, 133, 43, 1)", borderRight: "15px" }}>Sign Up</button>
+                            <input type="email" className='mt-5 p-2 w-50' placeholder='Your Email Address' style={{ backgroundColor: "white" , outline:"none" }} /><button className='p-2 px-3 text-light ' style={{ backgroundColor: "rgba(242, 133, 43, 1)" }}>Sign Up</button>
                         </div>
                     </div>
                 </div>

@@ -10,11 +10,7 @@ import {
     Menu,
     MenuButton,
     MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
+    MenuItem
 } from '@chakra-ui/react';
 import { FiHeart, FiLogOut, FiShoppingCart, FiUsers } from "react-icons/fi"
 import { toast } from 'react-hot-toast';
@@ -30,8 +26,6 @@ const Navbar = () => {
         navigate("/login");
         toast.success("Logged Out Successfully")
     }
-
-
     useEffect(() => {
         AOS.init(
             {
@@ -49,11 +43,10 @@ const Navbar = () => {
     }, []);
     return (
         <>
-
             <nav className="navbar navbar-expand-lg px-5 sticky-top p-0 " style={{ backgroundColor: "#e3e6f3" }}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/"> <img src={logo} alt="" style={{ height: "75px" }} /> </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -77,13 +70,13 @@ const Navbar = () => {
                         </ul>
                         {isLoggedIn ? (
                             <>
-                                <Link to="/">
+                                <Link to="/cart">
                                     <FiShoppingCart size={20} className='me-4' />
                                 </Link>
                                 <Menu>
                                     <MenuButton style={{
                                         textOverflow: "ellipsis ",
-                                        maxWidth: "45px",
+                                        maxWidth: "50px",
                                         whiteSpace: "nowrap ",
                                         overflow: "hidden  ",
                                         fontSize: "20px"

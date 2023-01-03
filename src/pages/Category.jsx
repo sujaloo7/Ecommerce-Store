@@ -48,7 +48,7 @@ const Category = () => {
                                     <>
 
                                         <div className="col-sm-3   text-center" style={{}}>
-                                            <Link to={`/category/${ele.id}`}>
+                                            <Link to={`/categoryproduct/${ele?.id}`}>
                                                 <div className="card m-2 p-3 category-card bg-light" style={{ height: "200px", display: "grid", alignItems: "center", textTransform: "capitalize" }}>
                                                     <h1>{ele}</h1>
                                                 </div>

@@ -11,6 +11,8 @@ import Shop from './pages/Shop';
 import Singleproduct from './pages/Singleproduct';
 import { Toaster } from 'react-hot-toast';
 import Category from './pages/Category';
+import Categoryproduct from './pages/Categoryproduct';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/category' element={<Category />} />
+          <Route path='/categoryproduct/:id' element={<Categoryproduct />} />
           <Route path='/singleproduct/:id' element={<Singleproduct />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
         <Toaster />
       </Router>
