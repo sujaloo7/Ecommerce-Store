@@ -123,7 +123,15 @@ a {
   display: grid;
   align-items: flex-end;
 }
-.checkout button
-{
+
+.checkout button {
   border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .hamburger {
+    display: block !important;
+    background-color: transparent;
+  }
 }

@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { ColorModeScript, ChakraProvider, theme } from '@chakra-ui/react'
-import ColorModeSwitcher from './ColorModeSwitcher';
+import { ChakraProvider } from '@chakra-ui/react'
+import { Provider } from 'react-redux';
+import { store } from "./Redux/store";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ColorModeScript />
-    <ChakraProvider theme={theme}>
-      <ColorModeSwitcher />
-      <App />
+    <ChakraProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>
 );

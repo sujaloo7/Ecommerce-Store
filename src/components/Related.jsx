@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import { Card, CardBody, Image, Stack, Heading, Text, Button, ButtonGroup, Divider, CardFooter } from '@chakra-ui/react';
-import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { server } from '..';
 import axios from 'axios';
 import Loader from '../pages/Loader';
@@ -36,10 +35,7 @@ const Related = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-        cssEase: "linear",
-        arrows: true,
-        nextArrow: <GrLinkNext />,
-        prevArrow: <GrLinkPrevious />,
+
         lazyLoad: true,
         responsive: [
             {

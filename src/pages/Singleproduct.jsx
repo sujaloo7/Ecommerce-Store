@@ -12,9 +12,15 @@ import { BsCart2, BsTagFill } from "react-icons/bs"
 import { toast } from 'react-hot-toast';
 import Related from '../components/Related';
 import Footer from '../components/Footer';
+import { useSelector, useDispatch } from "react-redux";
+import _ from 'lodash';
+import { addToCart } from '../Redux/shopping/shopping-action';
+import { FaShoppingBag } from "react-icons/fa"
 
 
 const Singleproduct = () => {
+    const userData = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
     const [products, setProducts] = useState({});
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,9 +28,17 @@ const Singleproduct = () => {
 
 
 
-    const addTocart = () => {
-        toast.success("Item Added To Cart")
-    }
+    const handleAddToCart = (e, item) => {
+        dispatch(addToCart(item));
+        if (_.isEmpty(userData?.user)) {
+            setLoading(false);
+            toast.success("Product has been added to cart!");
+        } else {
+            setLoading(false);
+            toast.success("Product has been added to cart!");
+        }
+
+    };
     const addTowishlist = () => {
         toast.success('Item Added To Wishlist !', {
             icon: '❤',
@@ -57,7 +71,7 @@ const Singleproduct = () => {
                 <div className="container mt-5">
                     <div className="row">
                         <div className="col-sm-6" style={{ height: "160px" }}>
-                            <Carousel infiniteLoop autoPlay showStatus={true} showArrows={false} showThumbs={false} interval={2000} >
+                            <Carousel infiniteLoop autoPlay showStatus={false} showArrows={false} showThumbs={false} interval={2000} >
                                 {images?.map((i, index) => {
                                     return (
                                         <div className=''>
@@ -89,8 +103,8 @@ const Singleproduct = () => {
                             <Text fontSize={"14px"} marginBottom={"1"} display={"flex"}><BsTagFill size={"20"} color={"green"} />Bank Offer10% off on Kotak Bank Credit Cards and Credit EMI Trxns, up to ₹1,500. On orders of ₹5,000 and above</Text>
                             <Text fontSize={"14px"} marginBottom={"1"} display={"flex"}><BsTagFill size={"20"} color={"green"} />Bank Offer10% off on ICICI Bank Credit Card EMI Transactions, up to ₹2,000. On orders of ₹5,000 and above</Text>
                             <Text fontSize={"14px"} marginBottom={"1"} display={"flex"}><BsTagFill size={"20"} color={"green"} />Buy this Product and Get Extra ₹500 Off on Two-Wheelers</Text>
-                            <Button p={"7"} leftIcon={<BsCart2 size={"20"} />} className="singleproductbtn1" onClick={addTocart}>Add To Cart</Button>
-                            <Button p={"7"} m={"5"} leftIcon={<FcLike size={"20"} />} className="singleproductbtn2" onClick={addTowishlist}>Add To Wishlist</Button>
+                            <Button p={"7"} leftIcon={<BsCart2 size={"20"} />} className="singleproductbtn1" onClick={(e) => handleAddToCart(e, products)}>Add To Cart</Button>
+                            <Button p={"7"} m={"5"} leftIcon={<FaShoppingBag size={"20"} />} className="singleproductbtn2" onClick={addTowishlist}>Buy Now</Button>
 
                         </div>
                     </div>

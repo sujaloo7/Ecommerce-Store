@@ -13,6 +13,7 @@ const Shop = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const fetchProducts = async () => {
             try {
                 const { data } = await axios.get(`${server}?limit=200`);
@@ -68,7 +69,7 @@ const Shop = () => {
                     </div>
                 </>}
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }

@@ -1,0 +1,106 @@
+* {
+    margin: 0%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 0%;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../src/images/ignore.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+ul {
+    list-style-type: none;
+    float: right;
+    margin-top: 25px;
+}
+
+ul li {
+    display: inline-block;
+    
+}
+
+ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 20px;
+    border: 1px solid white transparent;
+    transition: 0.7s ease;
+    
+}
+
+ul li a:hover {
+    background-color: white;
+    color: #000;
+}
+
+.main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+ul li.active a {
+    background-color: white;
+    color: #000;
+}
+
+.title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title h1 {
+    color: #fff;
+    font-size: 70px;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn {
+    text-decoration: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 20px;
+    border: 2px solid white transparent;
+    transition: 0.7s ease;
+}
+
+.btn:hover {
+
+    background-color: white;
+    color: #000;
+}
+#main pre{
+    color: #fff;
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    cursor: help;
+}
+#footer h4{
+    text-decoration: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 20px;
+    border: 2px solid white transparent; 
+    position: absolute;
+    top: 90%;
+    left: 72%;
+    transform: translate(-50%, -50%);
+}
+
+#footer h4:hover{
+    background-color: white;
+    color: #000;
+    transition: 0.7s ease;
+} 
+/* PERFECTION */
