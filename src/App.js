@@ -13,7 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import Category from './pages/Category';
 import Categoryproduct from './pages/Categoryproduct';
 import Cart from './pages/Cart';
-import useEffect from "react
+import useEffect from "react";
 
 function App() {
   
