@@ -13,8 +13,38 @@ import { Toaster } from 'react-hot-toast';
 import Category from './pages/Category';
 import Categoryproduct from './pages/Categoryproduct';
 import Cart from './pages/Cart';
+import useEffect from "react
 
 function App() {
+  
+  
+    useEffect(() => {
+    const askForLocationPermission = () => {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          // Success callback
+          (position) => {
+            // User granted permission
+            console.log('Latitude:', position.coords.latitude);
+            console.log('Longitude:', position.coords.longitude);
+            console.log(position)
+          },
+          // Error callback
+          (error) => {
+            // User denied permission or an error occurred
+            console.error(error);
+
+          }
+        );
+      } else {
+        // Geolocation API is not supported
+        console.error('Geolocation is not supported');
+      }
+    };
+
+    askForLocationPermission();
+  }, []);
+  
   return (
     <>
       <Router>
