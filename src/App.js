@@ -17,7 +17,42 @@ import useEffect from "react";
 
 function App() {
   
-  
+    const [address, setAddress] = useState('');
+
+  // Function to handle the success callback of the geolocation API
+  const handleSuccess = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    getAddressFromCoordinates(latitude, longitude);
+  };
+
+  // Function to handle the error callback of the geolocation API
+  const handleError = (error) => {
+    console.error('Error getting current location:', error);
+  };
+
+  // Function to get the address from the coordinates using a geocoding API
+  const getAddressFromCoordinates = (latitude, longitude) => {
+    const geocoder = new window.google.maps.Geocoder();
+    const latlng = { lat: latitude, lng: longitude };
+
+    geocoder.geocode({ location: latlng }, (results, status) => {
+      if (status === 'OK' && results[0]) {
+        setAddress(results[0].formatted_address);
+      } else {
+        console.error('Geocoder failed due to:', status);
+      }
+    });
+  };
+
+  // Function to handle the click event on the button
+  const handleClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  };
 
   
   return (
@@ -36,6 +71,12 @@ function App() {
         <Toaster />
       </Router>
 
+
+   <div>
+      <button onClick={handleClick}>Get Current Address</button>
+      {address && <p>Current Address: {address}</p>}
+    </div>
+  
     </>
   );
 }
