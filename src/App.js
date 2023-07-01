@@ -20,6 +20,36 @@ function App() {
     const [address, setAddress] = useState('');
 
   // Function to handle the success callback of the geolocation API
+  useEffect(() => {
+    const askForLocationPermission = async () => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          // Success callback
+          async (position) => {
+            // User granted permission
+            console.log("Latitude:", position.coords.latitude);
+            console.log("Longitude:", position.coords.longitude);
+            let address = await addressFromLatLng(
+              position.coords.latitude,
+              position.coords.longitude
+            );
+            console.log(address, "address");
+          },
+          // Error callback
+          (error) => {
+            // User denied permission or an error occurred
+            console.error(error);
+          }
+        );
+      } else {
+        // Geolocation API is not supported
+        console.error("Geolocation is not supported");
+      }
+    };
+
+    askForLocationPermission();
+  }, []);
+  
   const handleSuccess = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
